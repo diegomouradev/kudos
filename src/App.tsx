@@ -1,17 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { useNavigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { RedirectToLogin } from './components/RedirectToLogin';
+import { LoginPrompt } from './components/LoginPrompt';
 
 function App() {
-
-  
 	return (
-		<main>
-			<section>
-				<p>please enter username and password</p>
-			</section>
-		</main>
+		<BrowserRouter>
+			<Routes>
+				<Route path="/" element={<RedirectToLogin />}></Route>
+				<Route path="/login" element={<LoginPrompt />}></Route>
+			</Routes>
+		</BrowserRouter>
 	);
 }
 

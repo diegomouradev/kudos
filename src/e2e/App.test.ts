@@ -27,4 +27,17 @@ test('Redirects to logging page', async () => {
 	expect(url).toMatch('login');
 });
 
+test('Login redirects to personal dashboard', async () => {
+	if (page === undefined) {
+		fail();
+	}
+
+	await page.type('#username', 'diegomouradev');
+	await page.type('#password', 'niceTestPass123!');
+	await page.click('input[type="submit"]');
+	await page.waitForNavigation();
+
+	await expectPage.default(page).toMatch('Hello Diego Moura Dev!');
+});
+
 afterAll(async () => await browser?.close?.());

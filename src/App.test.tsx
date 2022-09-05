@@ -1,8 +1,12 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import { act } from 'react-dom/test-utils';
 import App from './App';
 
-test('prompt to login visible', () => {
-	render(<App />);
-	expect(screen.getByText('please enter username and password')).toBeInTheDocument();
+test('redirects to login', () => {
+	// eslint-disable-next-line testing-library/no-unnecessary-act
+	act(() => {
+		render(<App />);
+	});
+	expect(window.location.pathname).toBe('/login');
 });
