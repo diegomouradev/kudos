@@ -3,7 +3,9 @@ export function LoginPrompt() {
 		<main>
 			<section>
 				<p>please enter username and password</p>
-				<form>
+				// test damage: this a workaround for
+				// https://github.com/jsdom/jsdom/issues/1937
+				<form onSubmit={(e) => e.preventDefault()}>
 					<div>
 						<label htmlFor="username">Username</label>
 						<input id="username" type="text" required />
